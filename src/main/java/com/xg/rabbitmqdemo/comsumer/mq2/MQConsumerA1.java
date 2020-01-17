@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * @create: 2019-12-27 11:07
  **/
 @Component
-public class MQComsumerA1 {
+public class MQConsumerA1 {
 
     @RabbitListener(queues = "mq.test.demo")
     public void comsumer(Message message) throws Exception {

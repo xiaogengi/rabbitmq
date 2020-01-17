@@ -1,6 +1,5 @@
-package com.xg.rabbitmqdemo.comsumer.mq1;
+package com.xg.rabbitmqdemo.comsumer.mq2;
 
-import com.xg.rabbitmqdemo.config.RabbitMQConfig;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
@@ -12,14 +11,12 @@ import org.springframework.stereotype.Component;
  * @create: 2019-12-27 11:07
  **/
 @Component
-public class MQComsumer {
+public class MQConsumerA {
 
-    static String mq_test = RabbitMQConfig.MQ_TEST;
-
-    @RabbitListener(queues = "mq.demo")
+    @RabbitListener(queues = "mq.test.demo")
     public void comsumer(Message message) throws Exception {
         String s = new String(message.getBody(), "utf-8");
-        System.out.println("mq1 : 消费者1号：" + s.substring(1,s.length()-1));
+        System.out.println("mq2 : 消费者1号：" + s.substring(1,s.length()-1));
     }
 
 }
