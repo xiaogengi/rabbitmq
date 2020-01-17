@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MQComsumerA1 {
 
-    @RabbitListener(queues = "mq_test_1")
+    @RabbitListener(queues = "mq.test.demo")
     public void comsumer(Message message) throws Exception {
         String s = new String(message.getBody(), "utf-8");
         System.out.println("mq2 : 消费者2号：" + s.substring(1,s.length()-1));

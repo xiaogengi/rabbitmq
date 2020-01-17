@@ -1,5 +1,6 @@
 package com.xg.rabbitmqdemo.comsumer.mq1;
 
+import com.xg.rabbitmqdemo.config.RabbitMQConfig;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
@@ -13,7 +14,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class MQComsumer {
 
-    @RabbitListener(queues = "mq_test")
+    static String mq_test = RabbitMQConfig.MQ_TEST;
+
+    @RabbitListener(queues = "mq.demo")
     public void comsumer(Message message) throws Exception {
         String s = new String(message.getBody(), "utf-8");
         System.out.println("mq1 : 消费者1号：" + s.substring(1,s.length()-1));
