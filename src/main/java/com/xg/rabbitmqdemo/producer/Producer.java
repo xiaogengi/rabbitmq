@@ -18,11 +18,11 @@ public class Producer {
     private RabbitTemplate rabbitTemplate;
 
 
-
     @RequestMapping("test")
     public void test(){
         for (int i = 0; i < 100; i++) {
-            rabbitTemplate.convertAndSend("mq_test","我是" + i);
+            //fanout_exchange_test 是交换机的key
+            rabbitTemplate.convertAndSend("fanout_exchange_test","我是" + i);
         }
     }
 
